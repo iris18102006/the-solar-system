@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VR Solar System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="style.css">
+<script src="aframe-v1.5.0.min.js"></script>
+<script src="components.js"></script>
+<script src="solar.js"></script>
+</head>
+<body>
+<div id="hud">Drag to look · WASD to move · scroll to zoom · E/Space up · Q/Shift down · headset button (bottom right) for VR</div>
+
+<a-scene background="color: #02030a" renderer="antialias: true">
+  <a-light type="ambient" color="#b0b8d8" intensity="0.6"></a-light>
+  <a-light type="point" color="#fff2d6" intensity="3" decay="0" position="0 0 0"></a-light>
+
+  <a-entity stars></a-entity>
+
+  <!-- rig = up/down (E/Q); camera = look + WASD (moves where you look) -->
+  <a-entity id="rig" position="0 22 52" updown>
+    <a-entity camera="far: 1000" look-controls wasd-controls="acceleration: 40; fly: true" start-pitch="-22" wheel-zoom></a-entity>
+  </a-entity>
+
+  <!-- the sun -->
+  <a-sphere radius="3" segments-width="48" segments-height="32"
+            material="shader: flat; color: #ffb030" ctex="kind: sun; base: #ff9d1a; alt: #ffe066"
+            animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear"></a-sphere>
+  <a-sphere radius="3.7" material="color: #ffb347; opacity: 0.16; transparent: true; shader: flat"></a-sphere>
+
+  <a-entity id="system" solar></a-entity>
+</a-scene>
+</body>
+</html>
