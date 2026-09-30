@@ -1,0 +1,5 @@
+  html, body { margin: 0; height: 100%; background: #02030a; }
+  #hud { position: fixed; left: 12px; top: calc(12px + env(safe-area-inset-top, 0px));
+    color: #e8ecff; font: 13px/1.4 system-ui, sans-serif; background: rgba(10,14,30,.7);
+    padding: 8px 12px; border-radius: 10px; pointer-events: none; z-index: 99999; max-width: 80vw; }
+  #hud b { color: #ff8a8a; }
